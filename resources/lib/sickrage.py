@@ -31,7 +31,7 @@ class API:
         user = util.plugin.getSetting('user')
         password = util.plugin.getSetting('password')
         if user and password:
-            auth = base64.encodestring('{}:{}'.format(user, password)).replace('\n', '')
+            auth = base64.encodestring('{0}:{1}'.format(user, password)).replace('\n', '')
             req.add_header("Authorization", "Basic %s" % auth)        
         result = json.load(urllib2.urlopen(req))
         #util.log(result)

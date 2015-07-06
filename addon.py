@@ -28,6 +28,11 @@ try:
             util.log('invalid folder "' + vf + '"')
             import resources.lib.main as main
             main.menu()
+    elif 'title' in util.pluginArgs:
+        showtitle = util.pluginArgs['title']
+        print showtitle
+        import resources.lib.showAdd as showAdd
+        showAdd.action(showtitle)
     elif 'action' in util.pluginArgs:
         action = util.pluginArgs['action']
         if action == 'showAdd':
@@ -35,10 +40,10 @@ try:
             showAdd.action()
         else:
             util.log('invalid action "' + action + '"')
+
     else:
         import resources.lib.main as main
         main.menu()
 
 except IOError as ioe:
     util.message('Error', '%s' % ioe)
-    

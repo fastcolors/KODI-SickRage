@@ -1,19 +1,24 @@
 import xbmc
 import xbmcgui
+import sys
 
 from operator import itemgetter
 
+
 import util as util
 
-def action():
-    
+def action(showtitle=None):
+
     # Get the name
-    
-    keyboard = xbmc.Keyboard('', 'Search for...', False)
-    keyboard.doModal()
-    if not keyboard.isConfirmed():
-        return
-    searchName = keyboard.getText() 
+    if showtitle is not None:
+        searchName = showtitle
+
+    else:
+        keyboard = xbmc.Keyboard('', 'Search for...', False)
+        keyboard.doModal()
+        if not keyboard.isConfirmed():
+            return
+        searchName = keyboard.getText()
 
     # Get indexer to use
     
